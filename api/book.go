@@ -24,7 +24,13 @@ func (b Book) ToJSON() []byte {
 
 // FromJSON() for unmarshalling book type
 func FromJSON(data []byte) Book {
-	return Book{}
+	book := Book{}
+	err := json.Unmarshal(data, &book)
+	if err != nil {
+		panic(err)
+	}
+
+	return book
 }
 
 // BookHandleFunc for Book API
