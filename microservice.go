@@ -3,11 +3,14 @@ package main
 import (
 	"fmt"
 	"net/http"
+
+	"github.com/sunimalherath/book-microservice/api"
 )
 
 func main() {
 	http.HandleFunc("/", index)
 	http.HandleFunc("/api/echo", echo)
+	http.HandleFunc("/api/books", api.BookHandleFunc)
 	http.ListenAndServe(":8080", nil)
 }
 
